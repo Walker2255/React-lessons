@@ -1,24 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import img from "./assets/ing.jpg";
+import { useState } from "react";
+import Title from "./components/Title";
+import { Fragment } from "react";
 
 function App() {
+  const [name, setName] = useState("Azimjon");
+
+  const [showContent, setShowContent] = useState(true);
+
+  const [events, setEvents] = useState([
+    { title: "akhror's birthday party", id: 1 },
+    { title: "doniyor's live stream", id: 2 },
+    { title: "match: manchester united vs barcelona", id: 3 },
+  ]);
+
+  // change item
+  const handleClick = () => {
+    setName("Sardor");
+  };
+
+  // delete items way 1
+  // const handleDelete = (id) => {
+  //   const filteredEvent = events.filter((event) => {
+  //     return event.id !== id;
+  //   });
+  //   setEvents(filteredEvent);
+  // };
+
+  // delete items way 2
+  const handleDelete = (id) => {
+    setEvents((prev) => {
+      return prev.filter((event) => {
+        return event.id !== id;
+      });
+    });
+  };
+
+  let subtitle = "My events";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Title title="Azimjon's Kingdom 👑" subtitle={subtitle} />;
+      <img src={img} />
+      <h1>Mein name ist {name}</h1>
+      <button onClick={handleClick}>Change name</button>
+      <hr />
+      <br />
+      {showContent && (
+        <button onClick={() => setShowContent(false)}>Hide content</button>
+      )}
+      {!showContent && (
+        <button onClick={() => setShowContent(true)}>Show content</button>
+      )}
+      {showContent && (
+        <div>
+          {events.length == 0 && <h3>No content</h3>}
+          {events.map((event) => {
+            return (
+              <Fragment key={event.id}>
+                <h2>{event.title}</h2>
+                <button onClick={() => handleDelete(event.id)}>Delete</button>
+              </Fragment>
+            );
+          })}
+        </div>
+      )}
+    </>
   );
 }
 
