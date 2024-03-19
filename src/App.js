@@ -2,6 +2,7 @@ import img from "./assets/ing.jpg";
 import { useState } from "react";
 import Title from "./components/Title";
 import { Fragment } from "react";
+import Modal from "./components/Modal";
 
 function App() {
   const [name, setName] = useState("Azimjon");
@@ -65,6 +66,28 @@ function App() {
           })}
         </div>
       )}
+      {/* Ma'lumot yuborish */}
+      {/* <Modal>
+        <h2>Azimjon Xolmirzayev ❄️</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum,
+          est.
+        </p>
+      </Modal> */}
+      {/* Children props */}
+      <Modal>
+        <h2>Azimjon Xolmirzayev ❄️</h2>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum
+          impedit vel eius qui, blanditiis commodi consequuntur, laudantium
+          earum voluptatibus molestias repudiandae. Repellendus, ducimus totam
+          nisi molestiae excepturi obcaecati a incidunt, reprehenderit quis,
+          neque similique facilis porro id dolorum consequuntur aliquam dolores
+          perferendis sed voluptatibus nemo quia impedit quasi commodi
+          architecto!
+        </p>
+        <a href="#">Subscribe</a>
+      </Modal>
     </>
   );
 }
