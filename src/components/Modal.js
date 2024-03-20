@@ -1,7 +1,8 @@
 import "./Modal.css";
+import ReactDOM from "react-dom";
 
 function Modal({ children, closemodal }) {
-  return (
+  return ReactDOM.createPortal(
     <div className="modal-backdrop">
       {/* malumotni olish */}
       <div className="modal">
@@ -9,7 +10,8 @@ function Modal({ children, closemodal }) {
         <br />
         <button onClick={closemodal}>close</button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
