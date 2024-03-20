@@ -5,6 +5,8 @@ import { Fragment } from "react";
 import Modal from "./components/Modal";
 
 function App() {
+  const [showModal, setShowModal] = useState(true);
+
   const [name, setName] = useState("Azimjon");
 
   const [showContent, setShowContent] = useState(true);
@@ -38,6 +40,11 @@ function App() {
   };
 
   let subtitle = "My events";
+
+  // toogle modal function
+  const closemodal = () => {
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -75,19 +82,30 @@ function App() {
         </p>
       </Modal> */}
       {/* Children props */}
-      <Modal>
-        <h2>Azimjon Xolmirzayev ❄️</h2>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum
-          impedit vel eius qui, blanditiis commodi consequuntur, laudantium
-          earum voluptatibus molestias repudiandae. Repellendus, ducimus totam
-          nisi molestiae excepturi obcaecati a incidunt, reprehenderit quis,
-          neque similique facilis porro id dolorum consequuntur aliquam dolores
-          perferendis sed voluptatibus nemo quia impedit quasi commodi
-          architecto!
-        </p>
-        <a href="#">Subscribe</a>
-      </Modal>
+      {showModal && (
+        <Modal closemodal={closemodal}>
+          <h2>Azimjon Xolmirzayev ❄️</h2>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum
+            impedit vel eius qui, blanditiis commodi consequuntur, laudantium
+            earum voluptatibus molestias repudiandae. Repellendus, ducimus totam
+            nisi molestiae excepturi obcaecati a incidunt, reprehenderit quis,
+            neque similique facilis porro id dolorum consequuntur aliquam
+            dolores perferendis sed voluptatibus nemo quia impedit quasi commodi
+            architecto!
+          </p>
+          <a href="#">Subscribe</a>
+        </Modal>
+      )}
+      <br />
+      <br />
+      <button
+        onClick={() => {
+          setShowModal(true);
+        }}
+      >
+        Show modal
+      </button>
     </>
   );
 }

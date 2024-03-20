@@ -1,10 +1,14 @@
 import "./Modal.css";
 
-function Modal(props) {
+function Modal({ children, closemodal }) {
   return (
     <div className="modal-backdrop">
       {/* malumotni olish */}
-      <div className="modal">{props.children}</div>
+      <div className="modal">
+        {children}
+        <br />
+        <button onClick={closemodal}>close</button>
+      </div>
     </div>
   );
 }
