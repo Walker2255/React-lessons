@@ -1,8 +1,8 @@
 import img from "./assets/ing.jpg";
 import { useState } from "react";
 import Title from "./components/Title";
-import { Fragment } from "react";
 import Modal from "./components/Modal";
+import Event from "./components/Event";
 
 function App() {
   const [showModal, setShowModal] = useState(true);
@@ -60,19 +60,7 @@ function App() {
       {!showContent && (
         <button onClick={() => setShowContent(true)}>Show content</button>
       )}
-      {showContent && (
-        <div>
-          {events.length == 0 && <h3>No content</h3>}
-          {events.map((event) => {
-            return (
-              <Fragment key={event.id}>
-                <h2>{event.title}</h2>
-                <button onClick={() => handleDelete(event.id)}>Delete</button>
-              </Fragment>
-            );
-          })}
-        </div>
-      )}
+      {showContent && <Event events={events} handleDelete={handleDelete} />}
       {/* Ma'lumot yuborish */}
       {/* <Modal>
         <h2>Azimjon Xolmirzayev ❄️</h2>
